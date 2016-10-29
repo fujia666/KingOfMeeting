@@ -1,0 +1,124 @@
+
+<div id="example">
+	<h3 data-bind="click : cityfilterofsh">上海</h3>
+	<div>
+		<div class="building lf">
+			<input type="button" value="A座" data-bind="click:buildingclicked,visible:showbuildingA"/>
+			<input type="button" value="B座" data-bind="click : building('上海','B')"/>
+			<input type="button" value="C座" data-bind="click : building('上海','C')"/>
+			<input type="button" value="D座" data-bind="click : building('上海','D')"/>
+			<input type="button" value="E座" data-bind="click : building('上海','E')"/>
+		</div>
+		<div class="floorgulp">
+			<div class="floor lf A">
+				<input type="button" value="5F" data-bind="click : floor('上海','A','5F')"/><br>
+				<input type="button" value="4F" data-bind="click : floor('上海','A','4F')"/><br>
+				<input type="button" value="3F" data-bind="click : floor('上海','A','3F')"/><br>
+				<input type="button" value="2F" data-bind="click : floor('上海','A','2F')"/><br>
+				<input type="button" value="1F" data-bind="click : floor('上海','A','1F')"/>
+			</div>
+			<div class="floor lf B">
+				<input type="button" value="5F" data-bind="click : floor('上海','B','5F')"/><br>
+				<input type="button" value="4F" data-bind="click : floor('上海','B','4F')"/><br>
+				<input type="button" value="3F" data-bind="click : floor('上海','B','3F')"/><br>
+				<input type="button" value="2F" data-bind="click : floor('上海','B','2F')"/><br>
+				<input type="button" value="1F" data-bind="click : floor('上海','B','1F')"/>
+			</div>
+			<div class="floor lf C">
+				<input type="button" value="5F" data-bind="click : floor('上海','C','5F')"/><br>
+				<input type="button" value="4F" data-bind="click : floor('上海','C','4F')"/><br>
+				<input type="button" value="3F" data-bind="click : floor('上海','C','3F')"/><br>
+				<input type="button" value="2F" data-bind="click : floor('上海','C','2F')"/><br>
+				<input type="button" value="1F" data-bind="click : floor('上海','C','1F')"/>
+			</div>
+			<div class="floor lf D">
+				<input type="button" value="5F" data-bind="click : floor('上海','D','5F')"/><br>
+				<input type="button" value="4F" data-bind="click : floor('上海','D','4F')"/><br>
+				<input type="button" value="3F" data-bind="click : floor('上海','D','3F')"/><br>
+				<input type="button" value="2F" data-bind="click : floor('上海','D','2F')"/><br>
+				<input type="button" value="1F" data-bind="click : floor('上海','D','1F')"/>
+			</div>
+			<div class="floor lf E">
+				<input type="button" value="5F" data-bind="click : floor('上海','E','5F')"/><br>
+				<input type="button" value="4F" data-bind="click : floor('上海','E','4F')"/><br>
+				<input type="button" value="3F" data-bind="click : floor('上海','E','3F')"/><br>
+				<input type="button" value="2F" data-bind="click : floor('上海','E','2F')"/><br>
+				<input type="button" value="1F" data-bind="click : floor('上海','E','1F')"/>
+			</div>
+		</div>
+		<div class="meeting" data-bind="foreach: mlist">
+			
+                <button data-bind="click : calendar.bind(mid)" >
+					<span data-bind="text: city"></span>
+					<span data-bind="text: fname"></span><br>
+					<span data-bind="text: floor"></span><br>
+					<span data-bind="text: mname"></span>
+			    </button>
+			
+			
+		</div>
+	</div>
+	<h3 data-bind="click : cityfilterofwux">无锡</h3>
+	<div>
+		<div class="building lf">
+			<input type="button" value="A座" data-bind="click : building('无锡','A')"/>
+			<input type="button" value="B座" data-bind="click : building('无锡','B')"/>
+			<input type="button" value="C座" data-bind="click : building('无锡','C')"/>
+			<input type="button" value="D座" data-bind="click : building('无锡','D')"/>
+			<input type="button" value="E座" data-bind="click : building('无锡','E')"/>
+		</div>
+		<div class="floorgulp">
+			<div class="floor A">
+				<input type="button" value="5F" data-bind="click : floor('无锡','A','5F')"/><br>
+				<input type="button" value="4F" data-bind="click : floor('无锡','A','4F')"/><br>
+				<input type="button" value="3F" data-bind="click : floor('无锡','A','3F')"/><br>
+				<input type="button" value="2F" data-bind="click : floor('无锡','A','2F')"/><br>
+				<input type="button" value="1F" data-bind="click : floor('无锡','A','1F')"/>
+			</div>
+			<div class="floor B">
+				<input type="button" value="5F" data-bind="click : floor('无锡','B','5F')"/><br>
+				<input type="button" value="4F" data-bind="click : floor('无锡','B','4F')"/><br>
+				<input type="button" value="3F" data-bind="click : floor('无锡','B','3F')"/><br>
+				<input type="button" value="2F" data-bind="click : floor('无锡','B','2F')"/><br>
+				<input type="button" value="1F" data-bind="click : floor('无锡','B','1F')"/>
+			</div>
+			<div class="floor C">
+				<input type="button" value="5F" data-bind="click : floor('无锡','C','5F')"/><br>
+				<input type="button" value="4F" data-bind="click : floor('无锡','C','4F')"/><br>
+				<input type="button" value="3F" data-bind="click : floor('无锡','C','3F')"/><br>
+				<input type="button" value="2F" data-bind="click : floor('无锡','C','2F')"/><br>
+				<input type="button" value="1F" data-bind="click : floor('无锡','C','1F')"/>
+			</div>
+			<div class="floor D">
+				<input type="button" value="5F" data-bind="click : floor('无锡','D','5F')"/><br>
+				<input type="button" value="4F" data-bind="click : floor('无锡','D','4F')"/><br>
+				<input type="button" value="3F" data-bind="click : floor('无锡','D','3F')"/><br>
+				<input type="button" value="2F" data-bind="click : floor('无锡','D','2F')"/><br>
+				<input type="button" value="1F" data-bind="click : floor('无锡','D','1F')"/>
+			</div>
+			<div class="floor E">
+				<input type="button" value="5F" data-bind="click : floor('无锡','E','5F')"/><br>
+				<input type="button" value="4F" data-bind="click : floor('无锡','E','4F')"/><br>
+				<input type="button" value="3F" data-bind="click : floor('无锡','E','3F')"/><br>
+				<input type="button" value="2F" data-bind="click : floor('无锡','E','2F')"/><br>
+				<input type="button" value="1F" data-bind="click : floor('无锡','E','1F')"/>
+			</div>
+		</div>
+		<div class="meeting" data-bind="foreach: mlist" >
+			<button data-bind="click : calendar.bind(mid)">
+				<span data-bind="text: city"></span><span data-bind="text: fname"></span><br><span data-bind="text: floor"></span><br><span data-bind="text: mname"></span>
+			</button>
+		</div>
+	</div>
+	<h3>说明</h3>
+	<div>
+		<div class="content">
+			<p>This example simply sets a class attribute to the details and let's an external stylesheet toggle the collapsed state.
+				<br>
+				Hello Sir.
+				<br>	
+				I'm sliding</p>
+		</div>
+	</div>
+</div>
+

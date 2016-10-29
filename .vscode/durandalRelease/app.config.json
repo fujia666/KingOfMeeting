@@ -1,0 +1,21 @@
+{
+    "app": {
+        "baseUrl": "http://www.realsun.me:8003/rispweb/risphost/data/AjaxService.aspx?uiver=200&dynlogin=1",
+        "getMethod": "ShowHostTableDatas_Ajax",
+        "uploadFileUrl":"http://www.realsun.me:8003/rispweb/rispservice/SvcUploadFile2.aspx",
+        "httppath":"http://www.realsun.me:8003/rispweb//upfiles",
+        "saveMethod":"SaveData_Ajax",
+        "dic1Resid":526765618499,
+        "debug":true,
+        "dbs":null
+    },
+     "domesticfilght":
+    {        
+        "guoneiResid":526664384125,
+        "mainHtml":"./dist/component/domestic.html"
+    },
+    "internationalfilght":{
+        "guojiResid":526664335204,
+        "mainHtml":"./dist/component/international.html"
+    }
+}

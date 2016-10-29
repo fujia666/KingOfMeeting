@@ -1,0 +1,15 @@
+ <div data-bind="css: getClass()">
+            <div class="modal-header">
+                <h3 data-bind="html: title"> </h3>
+               
+            </div>
+            <div class="modal-body">
+                <div id='calendar'></div>
+            </div>
+            <div class="modal-footer">
+                <!-- ko foreach: options -->
+                <button class="rf" data-bind="click: function () { $parent.selectOption($parent.getButtonValue($data)); }, text: $parent.getButtonText($data), css: $parent.getButtonClass($index)"></button>
+                <!-- /ko -->
+                <div style="clear:both;"></div>
+            </div>
+</div>

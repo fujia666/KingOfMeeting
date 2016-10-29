@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>新增会议室</title>
+    <style>
+        .mta{
+            width: 600px;
+            margin:0 auto;
+        }
+        .mta thead th{
+            font-size: 2em;
+        }
+        .mta td{
+            border: 1px;
+            border-color: black;
+        }
+        .mta tr td:first-child{
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <table class="mta">
+        <thead>
+            <tr>
+                <th colspan="2">新增会议室</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>所在城市:</td>
+            <td>
+                <select name="" onchange="size=1">
+                    <option value="上海">上海</option>
+                    <option value="无锡">无锡</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>所在幢:</td>
+            <td>
+                <select name="" onchange="size=1">
+                    <option value="A座">A座</option>
+                    <option value="B座">B座</option>
+                    <option value="C座">C座</option>
+                    <option value="D座">D座</option>
+                    <option value="E座">E座</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>所在楼层:</td>
+            <td>
+                <select name="" onchange="size=1">
+                    <option value="一楼">一楼</option>
+                    <option value="二楼">二楼</option>
+                    <option value="三楼">三楼</option>
+                    <option value="四楼">四楼</option>
+                    <option value="五楼">五楼</option>
+                    <option value="六楼">六楼</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>会议室名称:</td>
+            <td>
+                <input type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td>电话号码:</td>
+            <td>
+                <input type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td>最大参会人数:</td>
+            <td>
+                <select name="">
+                    <option value="5人以内">5人以内</option>
+                    <option value="5至10人">5至10人</option>
+                    <option value="10至20人">10至20人</option>
+                    <option value="20至50人">20至50人</option>
+                    <option value="50人以上">50人以上</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>设备(多选)</td>
+            <td>
+                <input type="checkbox" value="电话会议设备"/>电话会议设备
+                <input type="checkbox" value="扩音设备"/>扩音设备
+                <input type="checkbox" value="投影仪"/>投影仪
+                <input type="checkbox" value="白板"/>白板
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                会议室图片<input type="file" name="">
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

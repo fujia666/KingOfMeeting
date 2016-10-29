@@ -1,0 +1,97 @@
+table{
+    border: 1px solid #99bbc1;
+    border-spacing: 0px;
+    margin:0 auto;
+    background-color: white;
+}
+table tr td{
+    border-bottom: 1px solid rgb(245, 245, 245);
+}
+table .head1
+{
+    background-color:rgb(245, 245, 245);
+    text-align: right;
+    height:30px;
+    line-height: 30px;
+}
+table .head
+{
+    background-color:#337AB7;
+    text-align: center;
+    height:30px;
+    line-height: 30px;
+    color:white;
+}
+table .headtimezone
+{
+    text-align: center;
+    height:30px;
+    line-height: 30px;
+}
+table .title
+{
+    background-color:rgb(245, 245, 245);
+    text-align: right;
+    height: 60px;
+}
+table .title1
+{
+    background-color:rgb(245, 245, 245);
+    text-align: center;
+}
+table .content
+{ 
+    width:200px;
+}
+ .mini-panel
+{
+    padding-top:5px;
+}
+.mini-textbox
+{
+    width:100%;
+}
+.mini-textbox input
+{
+    text-align: center;
+}
+a.head2{
+    margin:20px 0px 30px;
+    z-index: 5; 
+}
+.lf{
+    float:left;
+}
+.rf{
+    float:right;
+}
+.tc{
+    text-align: center;
+}
+.wtj{
+  background-color:#F0675A;
+}
+.ytj{
+  background-color:#C9FCFC;
+}
+.dqr{
+  background-color:#98B9ED;
+}
+.dsh{
+  background-color:#D9EDF7;
+}
+.none{
+  background-color:#76FF5A;
+}
+.ImgBox{
+		position:relative;
+		width:100px;
+		height:100px;
+	}
+	.oImg{
+		position:absolute;
+		top:20px;
+		left:20px;
+        width:70px;
+        z-index:1;
+	}
