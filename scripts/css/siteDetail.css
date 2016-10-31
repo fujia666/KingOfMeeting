@@ -115,10 +115,7 @@
     padding-left:15px;
     color:#ff3a3a;
 }
-.modal-body p b{
-    font-size: 5em;
-    color:#ff3a3a;
-}
+
 .cx td{
     font-size: 28px;
     color:#ff3a3a;
@@ -211,16 +208,21 @@
 }
 .modal-body{
     padding: 10px;
+    height:570px;
 }
+/*日历-天*/
+/*.fc-agenda-days{
+    height:500px;
+}*/
 p {
     margin: 0;
 }
 .modal-header {
     padding: 0 15px;
 }
-.active{
+/*.active{
     color:red;
-}
+}*/
 /**************************************新增会议室************************/
 .mta{
     width: 600px;
