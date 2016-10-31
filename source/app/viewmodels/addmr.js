@@ -7,7 +7,7 @@ define(['durandal/app','knockout','plugins/router','plugins/dialog','calendar/fu
             var user  = appConfig.app.user;
             var dbs=new dbHelper(baseUrl,user,ucode);
             var resid=appConfig.meetingroom.resid;
-            mini.parse();  
+            mini.parse();
 
             var fileupload = mini.get("fileupload1");
             fileupload.setUploadUrl(appConfig.app.uploadFileUrl+"?savepath=e:\\web\\rispweb\\upfiles&httppath="+appConfig.app.httppath);

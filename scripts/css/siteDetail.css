@@ -181,27 +181,23 @@
     margin:1%;
 }
 .floorgulp{
-    width: 50px;
+    width: 7%;
     height: 400px;
     padding-left: 10px;
     float:left;
-}
-.floor{
     text-align:center;
-    width:5%;
-    margin-top:10px;
 }
-.floor input{
-    margin-top:10px; 
+.floorgulp input{
+    margin-top:20px; 
 }
 .meeting{
-    width:750px;
+    width:93%;
 	height: 400px;
     float:left;
 	overflow: auto;
 }
 .meeting button{
-    width:16%;
+    width:122px;
     height:100px;
     margin:10px;
 }
@@ -214,13 +210,16 @@
     padding: 5px 20px 5px;
 }
 .modal-body{
-    padding: 10px 20px;
+    padding: 10px;
 }
 p {
     margin: 0;
 }
 .modal-header {
     padding: 0 15px;
+}
+.active{
+    color:red;
 }
 /**************************************新增会议室************************/
 .mta{
@@ -239,4 +238,8 @@ p {
 }
 .mta tr td:first-child{
     text-align: right;
+}
+/******************************************申请会议室**************************************************/
+.reserve {
+   
 }
