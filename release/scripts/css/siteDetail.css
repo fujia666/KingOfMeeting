@@ -236,7 +236,7 @@ p {
 .mta td{
     padding:5px;
 }
-.mta tr td:first-child{
+.mta tbody tr td:first-child{
     text-align: right;
 }
 /******************************************申请会议室**************************************************/
