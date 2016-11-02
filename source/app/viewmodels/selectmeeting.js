@@ -1,4 +1,6 @@
-define(['durandal/app','knockout','plugins/router','plugins/dialog','durandal/viewEngine','calendar/fullcalendar'], function (app,ko,router,dialog,fullcalendar,viewEngine) {
+define(['durandal/app','knockout','plugins/router','plugins/dialog','durandal/viewEngine','./attendee','durandal/system','calendar/fullcalendar'], function (app,ko,router,dialog,fullcalendar,viewEngine,attendee,system) {
+
+
             baseUrl=appConfig.app.baseUrl;
             getMethod=appConfig.app.getMethod;
             saveMethod=appConfig.app.saveMethod;
@@ -8,6 +10,7 @@ define(['durandal/app','knockout','plugins/router','plugins/dialog','durandal/vi
             var dbs=new dbHelper(baseUrl,user,ucode);
             var resid=appConfig.meetingroom.resid;
             var subresid=appConfig.meetingroom.subresid;
+            var poresid=appConfig.meetingroom.poresid;
             var cmswhere="";
             var city;
             var building;
@@ -21,163 +24,203 @@ define(['durandal/app','knockout','plugins/router','plugins/dialog','durandal/vi
     calendar=function(mdata){
         mid=mdata.mid;
         var html="<div id='calendar'></div>";
-        //dialog.MessageBox.setViewUrl("views/fetchOrderList.html");
-        dialog.showMessage(html,'会议室预定情况',['返回'],true);
-		// delete dialog.MessageBox.prototype.viewUrl;
-		// dialog.MessageBox.prototype.getView = function () {
-       	// 	return viewEngine.processMarkup(dialog.MessageBox.defaultViewMarkup);
-    	// };
-        eventJson=function(){
-            cmswhere="mid='"+mid+"'";
-            dbs.dbGetdata(subresid,0,cmswhere,fnSuccess,null,fnhttperror);
-            function fnSuccess(data){
-                console.log(data);
-                return data;
-            }
-            function fnhttperror(jqXHR, textStatus, errorThrown){
-                console.log(jqXHR);
-            }
-        }
-        jQuery(document).ready(function() { 
-            var date = new Date();
-		    dd = date.getDate();
-		    mm = date.getMonth();
-		    yyyy = date.getFullYear();
-            var calendar = jQuery('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-                height:400,
-                buttonText: {
-                    prev: 'prev',
-                    next: 'next',
-                    prevYear: '&nbsp;&lt;&lt;&nbsp;',
-                    nextYear: '&nbsp;&gt;&gt;&nbsp;',
-                    today: 'today',
-                    month: 'month',
-                    week: 'week',
-                    day: 'day'
-                },
-                selectable:true,
-                dayClick: function(date) {
-                    newDate=date.toString();
-                    yyyy=date.getFullYear();
-                    mm=date.getMonth();
-                    dd=date.getDate();
-                    $('#calendar').fullCalendar( 'gotoDate', yyyy,mm,dd );
-                    $('#calendar').fullCalendar('changeView','agendaDay')
-                },
-                events: eventJson()
-            });
-            $("h3:contains('会议室预定情况')").parent().next().next().prepend('<button class="btn btn-primary">我要预定</button>');
-        });
         
-        $(".modal-footer button:contains('我要预定')").click(function(){
-
-            ++mm;
-            
-            var list=`<form id="form" class="reserve">			
-                          <table width="600" border="5px" bordercolor="#fff">
-                              <tr>
-                                  <td width="20%">使用部门:</td>
-                                  <td width="30%">
-                                      <input class="mini-hidden" name="mid" value="`+mid+`"/>
-                                      <input class="mini-textbox" name="C3_531241040499" required="true"/>
-                                  </td>
-                                  <td width="20%">召集人:</td>
-                                  <td width="30%">
-                                      <input class="mini-textbox" name="C3_531241057192" required="true"/>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>会议开始时间:</td>
-                                  <td>
-                                      <input name="C3_531241203263" format="yyyy-MM-dd H:mm:ss" style="width:250px" class="mini-datepicker" showOkButton="true" showTime="true" value="`+yyyy+"-"+mm+"-"+dd+` 9:00:00" required="true"/>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>会议结束时间:</td>
-                                  <td>
-                                      <input name="C3_531241215834" format="yyyy-MM-dd H:mm:ss" style="width:250px" class="mini-datepicker" showOkButton="true" showTime="true" value="`+yyyy+"-"+mm+"-"+dd+` 10:00:00" required="true"/>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>参会人员:</td>
-                                  <td colspan="4">
-                                      <input name="C3_531241226642" class="mini-buttonedit" style="width:450px" required="true"/>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td colspan="5">
-                                      茶歇:
-                                  </td>
-                              </tr>
-                              <tr>    
-                                  <td>
-                                  </td>
-                                  <td colspan="2">   
-                                      中餐
-                                      <input name="C3_531241319249" class="mini-spinner" style="width:55px;text-align:right" minValue="0" maxValue="99">×15元/份
-                                  </td>
-                                  <td colspan="2">    
-                                      西餐
-                                      <input name="C3_531241331249" class="mini-spinner" style="width:55px;text-align:right" minValue="0" maxValue="99">×50元/份
-                                  </td>
-                              </tr> 
-                              <tr>
-                                  <td>
-                                  </td>
-                                  <td colspan="2">    
-                                      咖啡
-                                      <input name="C3_531241275373" class="mini-spinner" style="width:55px;text-align:right" minValue="0" maxValue="99">×20元/杯
-                                  </td>
-                                  <td colspan="2">
-                                      小瓶水
-                                      <input name="C3_531241265561" class="mini-spinner" style="width:55px;text-align:right" minValue="0" maxValue="99">×2元/瓶
-                                  </td>
-                              </tr>   
-                          </table>
-                    </form>`;
+        
+         jQuery(document).ready(function() { //日历控件
+            var date = new Date();
+		        dd = date.getDate();
+		        mm = date.getMonth()+1;
+		        yyyy = date.getFullYear();
+            var eventJson;
+            var reserve=function(){
+                cmswhere="mid='"+mid+"'";// AND month='"+yyyy+""+mm+"'";
+                dbs.dbGetdata(subresid,0,cmswhere,fnSuccess,null,null)
+                function fnSuccess(Json){
+                    for(var i = 0; i < Json.length; i++){
+                        Json[i].end=(Json[i]).endtime;
+                    }
+                    eventJson=Json;
+                };
+                return eventJson;
+            };
+            reserve();
+            setTimeout(function() {
+                dialog.showMessage(html,' ',['返回'],true);
+                var calendar = jQuery('#calendar').fullCalendar({
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay'
+                    },
+                    buttonText: {
+                        prev: 'prev',
+                        next: 'next',
+                        prevYear: '&nbsp;&lt;&lt;&nbsp;',
+                        nextYear: '&nbsp;&gt;&gt;&nbsp;',
+                        today: 'today',
+                        month: 'month',
+                        week: 'week',
+                        day: 'day'
+                    },
+                    height:500,
+                    slotEventOverlap:false,
+                    weekMode:"liquid",
+                    selectable:true,
+                    dayClick: function(date) {
+                        yyyy=date.getFullYear();
+                        mm=date.getMonth()+1;
+                        dd=date.getDate();
+                        $('#calendar').fullCalendar( 'gotoDate', yyyy,mm-1,dd );
+                        $('#calendar').fullCalendar('changeView','agendaDay');
+                    },
+                    events:eventJson
+                });
+                $("h3:contains(' ')").parent().next().next().prepend('<button class="btn btn-primary">我要预定</button>'); 
+                $("h3:contains(' ')").parent().hide();
+                $(".modal-footer button:contains('我要预定')").click(function(){
+                    //mini.parse();
                     
-            dialog.showMessage(list,'会议室预定申请',['返回'],true);
-            $("h3:contains('会议室预定申请')").parent().next().next().prepend('<button class="btn btn-primary">确认申请</button>');
-            
-            mini.parse();
-            $(".modal-footer button:contains('确认申请')").click(function(){
-                mini.parse();
-                var form = new mini.Form("form");
-                var o =  new mini.Form("form").getData();
-                form.validate(); 
-                if (form.isValid() == false) return;
-                o._id=1;
-                //console.log(mid);
-                o._state="added";
-                var json = mini.encode([o]);
-                dbs.dbSavedata(subresid,0,json,dataSaved,fnerror,fnhttperror);
-                function dataSaved(text){
-                    dialog.showMessage('<h1>申请成功</h1>','会议室申请',['返回'],true);
-                    setTimeout(function() {
-                        $(".modal-footer button:contains('确认申请')").next().click();
-                    }, 1500);
+                    
+                    var list='<form id="form" class="reserve">'+			
+                                  '<table width="600">'+
+                                      '<tr>'+
+                                          '<td width="20%">使用部门:</td>'+
+                                          '<td width="30%">'+
+                                              '<input class="mini-hidden" name="mid" value="'+mid+'"/>'+
+                                              '<input class="mini-textbox" name="title" required="true"/>'+
+                                          '</td>'+
+                                          '<td width="20%">召集人:</td>'+
+                                          '<td width="30%">'+
+                                              '<input class="mini-textbox" name="C3_531241057192" required="true"/>'+
+                                          '</td>'+
+                                      '</tr>'+
+                                      '<tr>'+
+                                          '<td>会议开始时间:</td>'+
+                                          '<td>'+
+                                              '<input name="start" format="yyyy-MM-dd H:mm" style="width:250px" class="mini-datepicker" showOkButton="true" showTime="true" value="'+yyyy+"-"+mm+"-"+dd+' 9:00" required="true"/>'+
+                                          '</td>'+
+                                      '</tr>'+
+                                      '<tr>'+
+                                          '<td>会议结束时间:</td>'+
+                                          '<td>'+
+                                              '<input name="endtime" format="yyyy-MM-dd H:mm" style="width:250px" class="mini-datepicker" showOkButton="true" showTime="true" value="'+yyyy+"-"+mm+"-"+dd+' 10:00" required="true"/>'+
+                                          '</td>'+
+                                      '</tr>'+
+                                      '<tr>'+
+                                          '<td>参会人员:</td>'+
+                                          '<td colspan="4">'+
+                                            '<input id="lookup"'+
+                                                    'name="C3_531241226642"'+
+                                                    'class="mini-lookup"'+
+                                                    'style="width:450px"'+
+                                                    'popup="#gridPanel"'+
+                                                    'grid="#datagrid1"'+
+                                                    'multiSelect="true"/>'+
+                                            '<div id="gridPanel" class="mini-panel" title="header" iconCls="icon-add" style="width:450px;height:250px;" showToolbar="true" showCloseButton="true" showHeader="false" bodyStyle="padding:0" borderStyle="border:0">'+
+                                                '<div property="toolbar" style="padding:5px;padding-left:8px;text-align:center;">'+  
+                                                    '<div style="float:left;padding-bottom:2px;">'+            
+                                                        '<input id="keyText" class="mini-textbox" style="width:160px;" onenter="onSearchClick"/>'+
+                                                        '<a class="mini-button" onclick="attendee">查询</a>'+
+                                                        '<a class="mini-button" iconCls="icon-remove" onclick="onClearClick">清空所有</a>'+
+                                                    '</div>'+
+                                                    '<div style="clear:both;"></div>'+
+                                                '</div>'+
+                                                '<div id="datagrid1" class="mini-datagrid" style="width:100%;height:100%;"borderStyle="border:0" showPageSize="false" showPageIndex="false"'+
+                                                    'url='+appConfig.app.baseUrl + "&method=" + appConfig.app.getMethod + "&user=" + appConfig.app.user + "&ucode=" + appConfig.app.ucode + "&resid=" + poresid + "&cmswhere=''" +
+                                                    'ajaxOptions='+"'"+'{dataType:"jsonp",jsonp:"jsoncallback"}'+"'"+'>'+
+                                                    '<div property="columns">'+
+                                                        '<div type="checkcolumn" ></div>'+
+                                                        '<div field="C3_227192484125" width="90" headerAlign="center" allowSort="true">姓名</div>'+    
+                                                        '<div field="C3_384367557332" width="150" headerAlign="center" allowSort="true">邮箱</div>'+               
+                                                    '</div>'+
+                                                '</div>'+                                             
+                                            '</div>'+
+                                        '</td>'+
+                                    '</tr>'+
+                                    '<tr>'+
+                                        '<td colspan="5">茶歇:</td>'+
+                                    '</tr>'+
+                                    '<tr>'+
+                                          '<td></td>'+
+                                          '<td colspan="2">中餐<input name="C3_531241319249" class="mini-spinner" style="width:55px;text-align:right" minValue="0" maxValue="99">×15元/份</td>'+
+                                          '<td colspan="2">西餐<input name="C3_531241331249" class="mini-spinner" style="width:55px;text-align:right" minValue="0" maxValue="99">×50元/份</td>'+
+                                      '</tr>'+
+                                      '<tr>'+
+                                          '<td></td>'+
+                                          '<td colspan="2">咖啡<input name="C3_531241275373" class="mini-spinner" style="width:55px;text-align:right" minValue="0" maxValue="99">×20元/杯</td>'+
+                                          '<td colspan="2">小瓶水<input name="C3_531241265561" class="mini-spinner" style="width:55px;text-align:right" minValue="0" maxValue="99">×2元/瓶</td>'+
+                                      '</tr>'+
+                                  '</table>'+
+                            '</form>';
 
-                }
-                function fnerror(text){
-                    dialog.showMessage(text,'会议室申请失败',['返回'],true);
-                    //alert(text);
-                }
-                function fnhttperror(jqXHR, textStatus, errorThrown){
-                    dialog.showMessage('error','会议室申请',['返回'],true);
-
-                }
-            });
-        }); 
-	};
+                    
+                    
+                    //$("h3:contains('会议室预定申请')").parent().next().next().prepend('<span class="lf">合计:'+total+'</span>');
+                    
+                    mini.parse();
+                    var grid = mini.get("datagrid1");
+                    var keyText = mini.get("keyText");
+                    var keyword = $('#keyText').html();
+                    var attendee=function(){
+                        cmswhere="C3_227192484125='%"+keyword+"%' OR C3_384367557332='%"+keyword+"%'";
+                        dbs.dbGetdata(poresid,0,"",fnSuccess,null,null);
+                        function fnSuccess(griddata){
+                            
+                        };
+                    }
+                    // grid.load();
+                
+                    // function onSearchClick(e) {
+                    //     grid.load({
+                    //         key: keyText.value
+                    //     });
+                    // }
+                    $(".mini-button span:contains('关闭')").click(function(e) {
+                        mini.parse();
+                        var lookup = mini.get("lookup");
+                        lookup.hidePopup();
+                    })
+                    var onClearClick = function(e) {
+                        var lookup = mini.get("lookup");
+                        lookup.deselectAll();
+                    }
+                    dialog.showMessage(list,'会议室预定申请',['返回'],true);
+                    $("h3:contains('会议室预定申请')").parent().next().next().prepend('<button class="btn btn-primary">确认申请</button>');
+                    mini.parse();
+                    $(".modal-footer button:contains('确认申请')").click(function(){
+                        mini.parse();
+                        var form = new mini.Form("form");
+                        var o =  new mini.Form("form").getData();
+                        form.validate(); 
+                        if (form.isValid() == false) return;
+                        o._id=1;
+                        o._state="added";
+                        var json = mini.encode([o]);
+                        dbs.dbSavedata(subresid,0,json,dataSaved,fnerror,fnhttperror);
+                        function dataSaved(text){
+                            dialog.showMessage('<h1>申请成功</h1>','会议室申请',['返回'],true);
+                            setTimeout(function() {
+                                $(".modal-footer button:contains('确认申请')").next().click();
+                            }, 1000);
+                          
+                        }
+                        function fnerror(text){
+                            dialog.showMessage(text,'会议室申请失败',['返回'],true);
+                            //alert(text);
+                        }
+                        function fnhttperror(jqXHR, textStatus, errorThrown){
+                            dialog.showMessage('error','会议室申请',['返回'],true);
+                          
+                        }
+                    });
+                }); 
+            }, 300);
+         });
+        
+        
+	  };
+                    
     gomeeting=function(self,city,building,floor){//页面输出
-        // console.log("city="+city);
-        // console.log("building="+building);
-        // console.log("floor="+floor);
         
         if(building===undefined&&floor===undefined){
             cmswhere="city='"+city+"'";
@@ -194,13 +237,13 @@ define(['durandal/app','knockout','plugins/router','plugins/dialog','durandal/vi
  
         }
         function fnhttperror(jqXHR, textStatus, errorThrown){
-            console.log(jqXHR);
+            //console.log(jqXHR);
         }
 	};
     return {
 		activate:function(){},
         attached:function(){
-        
+            
             (function($) {
               
                     function Collapse (el, options) {
@@ -358,12 +401,10 @@ define(['durandal/app','knockout','plugins/router','plugins/dialog','durandal/vi
         cityfilterofsh:function(){//筛选城市
             city="上海";
             gomeeting(this,city);
-        
         },
         cityfilterofwx:function(){//筛选城市
             city="无锡";
             gomeeting(this,city);
-        
         },
         buildingfilterA:function(){//筛选幢
             building="A座";

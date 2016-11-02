@@ -544,7 +544,7 @@ define(['durandal/system', 'durandal/app', 'durandal/composition', 'durandal/act
                 constrainedWidth = Math.min(width, windowWidth);
 
             $view.css({
-                'margin-top': (-constrainedHeight/2).toString() + 'px',
+                'margin-top': (-constrainedHeight / 2).toString() + 'px',
                 'margin-left': (-constrainedWidth / 2).toString() + 'px'
             });
 

@@ -7,6 +7,7 @@
         "ucode":"bTqoF2CcMCj7uIOBllZtDw==",
         "getMethod": "ShowHostTableDatas_Ajax",
         "uploadFileUrl":"http://www.realsun.me:8003/rispweb/rispservice/SvcUploadFile2.aspx",
+        "uppath":"?savepath=e:\\web\\rispweb\\upfiles&httppath=",
         "httppath":"http://www.realsun.me:8003/rispweb//upfiles",
         "saveMethod":"SaveData_Ajax",
         "debug":true,
@@ -35,7 +36,8 @@
     "appfunction":null,
     "meetingroom":{
         "resid":530878878265,
-        "subresid":531240746615
+        "subresid":531240746615,
+        "poresid":227186227531
     }
 
 }
