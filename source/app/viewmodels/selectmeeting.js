@@ -1,4 +1,4 @@
-define(['durandal/app','knockout','plugins/router','plugins/dialog','durandal/viewEngine','./attendee','durandal/system','calendar/fullcalendar'], function (app,ko,router,dialog,fullcalendar,viewEngine,attendee,system) {
+define(['durandal/app','knockout','plugins/router','plugins/dialog','durandal/viewEngine','./reserve','durandal/system','calendar/fullcalendar'], function (app,ko,router,dialog,fullcalendar,viewEngine,reserve,system) {
 
 
             baseUrl=appConfig.app.baseUrl;
@@ -245,7 +245,7 @@ define(['durandal/app','knockout','plugins/router','plugins/dialog','durandal/vi
         attached:function(){
             
             (function($) {
-              
+                    
                     function Collapse (el, options) {
                         options = options || {};
                         var _this = this,

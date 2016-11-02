@@ -1,55 +1,72 @@
-
-		<form>			
-			<table width="600" border="1px" bordercolor="#000000" cellspacing="0px">
-				<thead>
-					<tr>
-						<th colspan="4">会议预订申请</th>
-					</tr>	
-				</thead>
-			<tr>
-				<td width="20%">使用部门:</td>
-				<td width="30%">
-					<input type="text"/>
-				</td>
-				<td width="20%">召集人:</td>
-				<td width="30%">
-					<input type="text"/>
-				</td>
-			</tr>
-			<tr>
-				<td>会议开始日期:</td>
-				<td>
-					<input type="text"/>
-				</td>
-				<td>会议开始时间:</td>
-				<td>
-					<input type="text"/>
-				</td>
-			</tr>
-			<tr>
-				<td>会议结束日期:</td>
-				<td>
-					<input type="text"/>
-				</td>
-				<td>会议结束时间:</td>
-				<td>
-					<input type="text"/>
-				</td>
-			</tr>
-			<tr>
-				<td>参会人员:</td>
-				<td colspan="4">
-					<input type="text" size="60"/>
-				</td>
-			</tr>
-			<tr>
-				<td  colspan="5">
-					茶歇:<br/>
-					<input type="checkbox">小瓶水<input type="text" style="width:25px;text-align:right" value="1">×2元/瓶
-					<input type="checkbox">咖啡<input type="text" style="width:25px;text-align:right" value="1">×20元/杯<br>
-					<input type="checkbox">中餐<input type="text" style="width:25px;text-align:right" value="1">×15元/份
-					<input type="checkbox">西餐<input type="text" style="width:25px;text-align:right" value="1">×50元/份
-				</td>
-			</tr>
-			</table>
-		</form>
+<form id="form" class="reserve">			
+    <table width="600">
+        <tr>
+            <td>使用部门:</td>
+            <td>
+                <input class="mini-hidden" name="mid" value="+mid+"/>
+                <input class="mini-textbox" name="title" required="true"/>
+            </td>
+            <td>召集人:</td>
+            <td>
+                <input class="mini-textbox" name="C3_531241057192" required="true"/>
+            </td>
+        </tr>
+        <tr>
+            <td>会议开始时间:</td>
+            <td colspan="3">
+                <input name="start" format="yyyy-MM-dd H:mm" style="width:250px" class="mini-datepicker" showOkButton="true" showTime="true" value="+yyyy+"-"+mm+"-"+dd+ 9:00" required="true"/>
+            </td>
+        </tr>
+        <tr>
+            <td>会议结束时间:</td>
+            <td colspan="3">
+                <input name="endtime" format="yyyy-MM-dd H:mm" style="width:250px" class="mini-datepicker" showOkButton="true" showTime="true" value="+yyyy+"-"+mm+"-"+dd+ 10:00" required="true"/>
+            </td>
+        </tr>
+        <tr>
+            <td>参会人员:</td>
+            <td colspan="4">
+              <input id="lookup"+
+                      name="C3_531241226642"+
+                      class="mini-lookup"+
+                      style="width:450px"+
+                      popup="#gridPanel"+
+                      grid="#datagrid1"+
+                      multiSelect="true"/>
+              <div id="gridPanel" class="mini-panel" title="header" iconCls="icon-add" style="width:450px;height:250px;" showToolbar="true" showCloseButton="true" showHeader="false" bodyStyle="padding:0" borderStyle="border:0">
+                  <div property="toolbar" style="padding:5px;padding-left:8px;text-align:center;">  
+                      <div style="float:left;padding-bottom:2px;">            
+                          <input id="keyText" class="mini-textbox" style="width:160px;" onenter="onSearchClick"/>
+                          <a class="mini-button" onclick="attendee">查询</a>
+                          <a class="mini-button" iconCls="icon-remove" onclick="onClearClick">清空所有</a>
+                      </div>
+                      <div style="clear:both;"></div>
+                  </div>
+                  <div id="datagrid1" class="mini-datagrid" style="width:100%;height:100%;"borderStyle="border:0" showPageSize="false" showPageIndex="false"+
+                      url=+appConfig.app.baseUrl + "&method=" + appConfig.app.getMethod + "&user=" + appConfig.app.user + "&ucode=" + appConfig.app.ucode + "&resid=" + poresid + "&cmswhere=" +
+                      ajaxOptions='{dataType:"jsonp",jsonp:"jsoncallback"}'>
+                      <div property="columns">
+                          <div type="checkcolumn" ></div>
+                          <div field="C3_227192484125" width="90" headerAlign="center" allowSort="true">姓名</div>    
+                          <div field="C3_384367557332" width="150" headerAlign="center" allowSort="true">邮箱</div>               
+                      </div>
+                  </div>                                             
+              </div>
+          </td>
+      </tr>
+      <tr>
+          <td colspan="5">茶歇:</td>
+      </tr>
+      <tr>
+            <td></td>
+            <td colspan="2">中餐<input name="C3_531241319249" class="mini-spinner" style="width:55px;text-align:right" minValue="0" maxValue="99">×15元/份</td>
+            <td colspan="2">西餐<input name="C3_531241331249" class="mini-spinner" style="width:55px;text-align:right" minValue="0" maxValue="99">×50元/份</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="2">咖啡<input name="C3_531241275373" class="mini-spinner" style="width:55px;text-align:right" minValue="0" maxValue="99">×20元/杯</td>
+            <td colspan="2">小瓶水<input name="C3_531241265561" class="mini-spinner" style="width:55px;text-align:right" minValue="0" maxValue="99">×2元/瓶</td>
+        </tr>
+    </table>
+</form>;
+		

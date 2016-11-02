@@ -1,4 +1,4 @@
-define(['plugins/http', 'durandal/app', 'knockout','durandal/system','plugins/router','./editmr','./scanner','plugins/dialog'], function (http, app, ko,system,router,editmr,scanner,dialog) {
+define(['plugins/http', 'durandal/app', 'knockout','durandal/system','plugins/router','./editmr','./reserve','./scanner','plugins/dialog'], function (http, app, ko,system,router,editmr,reserve,dialog) {
             baseUrl=appConfig.app.baseUrl;
             getMethod=appConfig.app.getMethod;
             saveMethod=appConfig.app.saveMethod;
@@ -46,7 +46,7 @@ define(['plugins/http', 'durandal/app', 'knockout','durandal/system','plugins/ro
         
         edit=function(mdata){
             var mid=mdata.mid;
-            editmr.show(mid);
+            reserve.show(mid);
         };     
             (function($) {
               
