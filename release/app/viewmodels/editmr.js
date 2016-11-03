@@ -9,8 +9,10 @@ define(['durandal/app','knockout','plugins/router','plugins/dialog','calendar/fu
     var editmr = function() {
     };
     editmr.prototype.del = function(){
+        
         var that=this;
         if(confirm('您确定要删除么？')){
+            $('#del').attr({"disabled":"disabled"});
             mini.parse();
             var form = new mini.Form("editform");
             var o =  new mini.Form("editform").getData();
@@ -40,8 +42,10 @@ define(['durandal/app','knockout','plugins/router','plugins/dialog','calendar/fu
         dialog.close(this) 
     };
     editmr.prototype.ok = function() {
+        
         var that=this;
         if(confirm('您确定要修改么？')){
+            $('#ok').attr({"disabled":"disabled"});
             mini.parse();
             var form = new mini.Form("editform");
             var o =  new mini.Form("editform").getData();

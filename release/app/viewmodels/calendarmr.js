@@ -90,7 +90,6 @@ define(['plugins/dialog', 'knockout','calendar/fullCalendar'], function (dialog,
 
     carendarmr.show = function(mdata){
         mid=mdata;
-        console.log(mid);
         return dialog.show(new carendarmr());
     };
     

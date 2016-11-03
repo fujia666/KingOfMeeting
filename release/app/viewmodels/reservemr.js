@@ -32,6 +32,7 @@ define(['durandal/app','knockout','plugins/router','plugins/dialog','calendar/fu
         // }
     };
     reservemr.prototype.ok = function() {
+        $('#ok').attr({"disabled":"disabled"});
         var that=this;
         mini.parse();
         var form = new mini.Form("form");

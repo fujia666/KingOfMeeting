@@ -181,23 +181,20 @@ define(['plugins/http', 'durandal/app', 'knockout','durandal/system','plugins/ro
                     $(function() {
                       $.fn.collapse(false, true);
                     });
-                
                     jQueryCollapse = Collapse;
-          
             })(window.jQuery);
-            setTimeout(function() {
-                $("#example").collapse({
-                    accordion: true,
-                    open: function() {
-                        this.addClass("open");
-                        this.css({ height: "450px" });
-                    },
-                    close1: function() {
-                        this.css({ height: "0px" });
-                        this.removeClass("open");
-                    }
-                });
-            }, 100);
+            $("#example").collapse({
+                accordion: true,
+                open: function() {
+                    this.addClass("open");
+                    this.css({ height: "450px" });
+                },
+                close1: function() {
+                    this.css({ height: "0px" });
+                    this.removeClass("open");
+                }
+            });
+            
         },
         mlist:ko.observableArray([]),
         cityfilterofsh:function(){//筛选城市

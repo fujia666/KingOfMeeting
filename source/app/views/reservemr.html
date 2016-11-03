@@ -14,13 +14,13 @@
         <tr>
             <td>会议开始时间:</td>
             <td colspan="3">
-                <input name="start" format="yyyy-MM-dd H:mm" style="width:250px" class="mini-datepicker" showOkButton="true" showTime="true" value="+yyyy+"-"+mm+"-"+dd+ 9:00" required="true"/>
+                <input name="start" format="yyyy-MM-dd H:mm" style="width:250px" class="mini-datepicker" showOkButton="true" showTime="true" required="true"/>
             </td>
         </tr>
         <tr>
             <td>会议结束时间:</td>
             <td colspan="3">
-                <input name="endtime" format="yyyy-MM-dd H:mm" style="width:250px" class="mini-datepicker" showOkButton="true" showTime="true" value="+yyyy+"-"+mm+"-"+dd+ 10:00" required="true"/>
+                <input name="endtime" format="yyyy-MM-dd H:mm" style="width:250px" class="mini-datepicker" showOkButton="true" showTime="true" required="true"/>
             </td>
         </tr>
         <tr>
@@ -69,7 +69,7 @@
         </tr>
         <tr class="mtaf tc">
             <td colspan="3">
-                <input type="button" value="确认申请" class="btn btn-primary" data-bind="click : ok">
+                <input type="button" id="ok" value="确认申请" class="btn btn-primary" data-bind="click : ok">
                 <input type="button" value="取消申请" class="btn btn-primary" data-bind="click : cancel">
             </td>
         </tr>
