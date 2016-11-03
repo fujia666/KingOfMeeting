@@ -19,7 +19,6 @@ define(['plugins/http', 'durandal/app', 'knockout','durandal/system','plugins/ro
             var dd;
             var mid;
     gomeeting=function(self,city,building,floor){//页面输出
-        
         if(building===undefined&&floor===undefined){
             cmswhere="city='"+city+"'";
         }else if(building!=undefined&&floor===undefined){
@@ -42,11 +41,9 @@ define(['plugins/http', 'durandal/app', 'knockout','durandal/system','plugins/ro
 		activate:function(){},
         attached:function(){
         
-        self=this;
-        
         edit=function(mdata){
-            var mid=mdata.mid;
-            reserve.show(mid);
+            mid=mdata.mid;
+            editmr.show(mid);
         };     
             (function($) {
               
@@ -252,6 +249,9 @@ define(['plugins/http', 'durandal/app', 'knockout','durandal/system','plugins/ro
         },
         floorfilter1F:function(){//筛选楼层
             floor="1F";
+            gomeeting(this,city,building,floor);
+        },
+        refresh:function(){
             gomeeting(this,city,building,floor);
         }
     }

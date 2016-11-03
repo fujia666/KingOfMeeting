@@ -88,13 +88,13 @@
                 <img align='right' id='imgUploaded' width="70px"/>
             </td>
         </tr>
-        <tfoot class="tc">
+        <tfoot class="tc mtaf">
             <tr>
                 <td colspan="2">
                     <input name="REC_ID" class="mini-Hidden" allowInput="false"/>
-                    <input class="mini-button" iconCls="icon-remove" onclick="delClick" text="删除" >
-                    <input class="mini-button" iconCls="icon-save" onclick="saveClick" text="确认修改" >
-                    <input class="mini-button" iconCls="icon-close" onclick="cencelClick" text="取消" >
+                    <input type="button" value="删除" class="btn btn-danger" data-bind="click : del">
+                    <input type="button" value="确认修改" class="btn btn-primary" data-bind="click : ok">
+                    <input type="button" value="取消" class="btn btn-primary" data-bind="click : cancel">
                 </td>
             </tr>
         </tfoot>

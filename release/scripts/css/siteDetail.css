@@ -217,11 +217,21 @@ p {
 .fc-day-number{
     padding-right:3px;
 }
-/*.active{
-    color:red;
-}*/
+#calendar{
+    border: 2px solid #ddd;
+    background: #fefefe;
+    padding: 10px;
+    height:520px;
+}
+.calendarFoot{
+    border: 2px solid #ddd;
+    background: #fefefe;
+    padding: 10px;
+    height:60px;
+    padding-left:600px;
+}
 /**************************************新增会议室************************/
-.mta,{
+.mta{
     width: 600px;
     margin:20px auto;
     border: 2px solid #ddd;
@@ -239,7 +249,9 @@ p {
 .mta tbody tr td:first-child{
     text-align: right;
 }
-
+.mtaf input{
+    margin:20px;
+}
 /******************************************申请会议室**************************************************/
 .fc-event {
     border: 1px solid #333;
