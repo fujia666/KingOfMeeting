@@ -76,7 +76,7 @@ define(['durandal/app','knockout','plugins/router','plugins/dialog','calendar/fu
         
         cmswhere="mid="+mid;
         dbs.dbGetdata(resid,0,cmswhere,fnSuccess,null,null);
-        function fnSuccess(data,subdata){
+        function fnSuccess(data){
             mini.parse();
             var form = new mini.Form("editform");
             form.setData(data[0]);

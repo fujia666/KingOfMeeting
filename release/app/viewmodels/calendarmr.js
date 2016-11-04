@@ -17,15 +17,17 @@ define(['plugins/dialog', 'knockout','calendar/fullCalendar'], function (dialog,
             var mm;
             var dd;
             var mid;
+            var eventJson;
     var carendarmr = function() {
         jQuery(document).ready(function() { //日历控件
             var date = new Date();
 		        dd = date.getDate();
 		        mm = date.getMonth()+1;
 		        yyyy = date.getFullYear();
-            var eventJson;
+            
             var reserve=function(){
-                cmswhere="mid='"+mid+"'";// AND month='"+yyyy+""+mm+"'";
+                mn=mm-1;
+                cmswhere="mid='"+mid+"' AND month='"+yyyy+""+mm+"' OR month='"+yyyy+""+mn+"'";
                 dbs.dbGetdata(subresid,0,cmswhere,fnSuccess,null,null)
                 function fnSuccess(Json){
                     for(var i = 0; i < Json.length; i++){
@@ -63,10 +65,11 @@ define(['plugins/dialog', 'knockout','calendar/fullCalendar'], function (dialog,
                         dd=date.getDate();
                         $('#calendar').fullCalendar( 'gotoDate', yyyy,mm-1,dd );
                         $('#calendar').fullCalendar('changeView','agendaDay');
+                        reserve(yyyy,mm);
                     },
                     events:eventJson
                 });
-            }, 300);
+            }, 350);
         });
     }
     carendarmr.prototype.cancel = function() {
@@ -76,15 +79,12 @@ define(['plugins/dialog', 'knockout','calendar/fullCalendar'], function (dialog,
     };
     carendarmr.prototype.ok = function() {
     
-        var me=this;
-        dialog.close(me);
+        var that=this;
+        dialog.close(that);
         
     };
     carendarmr.prototype.attached=function(){
        
-         
-
-
     };
    
 
@@ -93,8 +93,5 @@ define(['plugins/dialog', 'knockout','calendar/fullCalendar'], function (dialog,
         return dialog.show(new carendarmr());
     };
     
-  
-           
-       
     return carendarmr;
 });
