@@ -8238,6 +8238,13 @@ mini.ajax = function (options) {
     if (!options.dataType) {
         options.dataType = "text";
     }
+    if (options.type)
+    {
+        if (options.dataType=="jsonp")
+        {
+            delete options.type;
+        }
+    }
     
     
 

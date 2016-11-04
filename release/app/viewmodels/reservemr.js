@@ -25,17 +25,17 @@ define(['durandal/app','knockout','plugins/router','plugins/dialog','calendar/fu
         }
     reservemr.prototype.attached=function(){
         mini.parse();
-        var urllist=appConfig.app.baseUrl + "&method=" + appConfig.app.getMethod + "&user=" + appConfig.app.user + "&ucode=" + appConfig.app.ucode + "&resid=" + poresid + "&cmswhere=''";
+        var urllist=appConfig.app.baseUrl + "&method=" + appConfig.app.getMethod + "&user=" + appConfig.app.user + "&ucode=" + appConfig.app.ucode + "&pageIndex=1&pageSize=10&subresid=0&resid=" + poresid + "&cmswhere=''";
         console.log(urllist);
         // $('#datagrid1').attr('url',urllist);
         var grid = mini.get("datagrid1");
-        // dbs.dbGetdata(poresid,0,'',fnSuccess,null,null);
-        // function fnSuccess(mdata){
-        //     console.log(mdata);
-        //     grid.set({data:mdata});
-        // }
+        dbs.dbGetdata(poresid,0,'',fnSuccess,null,null);
+        function fnSuccess(mdata){
+            console.log(mdata);
+            grid.set({data:mdata});
+        }
         
-        grid.set({url:urllist, ajaxOptions:'{dataType:"jsonp",jsonp:"jsoncallback"}'});
+        grid.set({url:urllist, ajaxOptions:{dataType:"jsonp",jsonp:"jsoncallback"}});
         grid.load({key:""},loadSuccess,null);
         function loadSuccess(e)
         {
